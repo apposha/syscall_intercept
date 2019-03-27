@@ -30,7 +30,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 cmake_minimum_required(VERSION 3.3)
-project(syscall_intercept C CXX ASM)
+project(syscall_intercept C ASM)
 
 set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 # Setting CMAKE_DISABLE_IN_SOURCE_BUILD to ON should
@@ -147,7 +147,7 @@ set_target_properties(syscall_intercept_shared
 	PROPERTIES VERSION ${SYSCALL_INTERCEPT_VERSION}
 		   SOVERSION ${SYSCALL_INTERCEPT_VERSION_MAJOR})
 
-add_executable(cpp_test src/cpp_compile_test.cc src/cpp_compile_mock.c)
+#add_executable(cpp_test src/cpp_compile_test.cc src/cpp_compile_mock.c)
 
 set_target_properties(syscall_intercept_shared syscall_intercept_static
 	PROPERTIES
@@ -155,7 +155,7 @@ set_target_properties(syscall_intercept_shared syscall_intercept_static
 	PUBLIC_HEADER "include/libsyscall_intercept_hook_point.h"
 	OUTPUT_NAME syscall_intercept)
 
-add_dependencies(syscall_intercept_base_c cpp_test)
+#add_dependencies(syscall_intercept_base_c cpp_test)
 
 if(PERFORM_STYLE_CHECKS)
 	include(FindPerl)
